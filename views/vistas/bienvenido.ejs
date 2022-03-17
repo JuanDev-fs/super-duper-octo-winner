@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <%-include('../partials/head') %>
+
+<body>
+    <%-include('../partials/header') %>
+    <main>
+        <% if (title==="Home") { %>
+            <h2><%= title %></h2>
+          <% } %>
+
+        <% if (title==="Usuarios") { %>
+            <h2><%= title %></h2>
+            <!-- <% console.log(usuarios) %> -->
+            <%  for (let index = 0; index < usuarios.length; index++) { %>
+                
+                <p>id: <%= usuarios[index].id %>, Nombre: <%= usuarios[index].nombre %>, Apellido:<%= usuarios[index].apellido %>, Edad: <%= usuarios[index].edad %> años.</p> 
+                
+                <% } %>
+
+        <% } %>
+            
+        <% if (title==="Usuario Id") { %>
+            <h2><%= title %></h2>
+            <!-- <% console.log(usuarios) %> -->
+                
+            <p><b> id: <%= usuarios.id %></b>, Nombre: <%= usuarios.nombre %>, Apellido:<%= usuarios.apellido %>, Edad: <%= usuarios.edad %> años.</p>     
+    
+        <% } %>
+
+        <% if (title==="Usuario de Apellido") { %>
+            <h2><%= title %> <%= apellido %></h2>
+            <!-- <% console.log(usuarios) %> -->
+
+            <%  for (let index = 0; index < usuarios.length; index++) { %>
+                
+                <p>id: <%= usuarios[index].id %>, Nombre: <%= usuarios[index].nombre %>, <b> Apellido:<%= usuarios[index].apellido %> </b>, Edad: <%= usuarios[index].edad %> años.</p> 
+                
+                <% } %>    
+        
+        <% } %>
+
+
+        <% if (title==="Usuario por Edad") { %>
+            <h2><%= title %> mayores de <%= edad %> años</h2>
+            <!-- <% console.log(usuarios) %> -->
+
+            <%  for (let index = 0; index < usuarios.length; index++) { %>
+                
+                <p>id: <%= usuarios[index].id %>, Nombre: <%= usuarios[index].nombre %>, Apellido:<%= usuarios[index].apellido %>,<b> Edad: <%= usuarios[index].edad %> años.</b></p> 
+                
+                <% } %>    
+        
+        <% } %>
+
+    </main>
+    <%-include('../partials/footer') %>
+</body>
+</html>

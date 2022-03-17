@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+    <%- include('../partials/menu') %>
+
+
+    <main>
+        <h2 class="text-center mt-3">Registro</h2>
+        <form action="">
+
+            <div class="container col-sm-6">
+                <div class="row">
+                  <div class="col mb-3">
+                        <label for="nombre" class="form-label">Nombre y Apellido</label>
+                        <input type="text" name="nombre" id="nombre" required class="form-control" autofocus>
+                  </div>
+                  <div class="col mb-3">
+                        <label for="username" class="form-label">Nombre de Usuario</label>
+                        <input type="text" name="username" id="username" required class="form-control">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col mb-3">
+                        <label for="passwordemail" class="form-label">Contraseña</label>
+                        <input type="password" name="password" id="password" required class="form-control">
+                  </div>
+                  <div class="col mb-3">
+                        <label for="password2" class="form-label">Repetir Contraseña</label>
+                        <input type="password" name="password2" id="password2" required class="form-control">
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" name="email" id="email" required class="form-control">
+                    </div>
+                    <div class="col mb-3">
+                        <label for="telefono" class="form-label">Telefono</label>
+                        <input type="tel" name="telefono" id="telefono" class="form-control">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                        <label for="pais" class="form-label">Pais</label>
+                        <select name="pais" id="pais" class="form-select">
+                            <option value="argentina">Argentina</option>
+                            <option value="brasil">Brasil</option>
+                            <option value="bolivia">Bolivia</option>
+                            <option value="uruguay">Uruguay</option>
+                            <option value="chile">Chile</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="date" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" name="date" id="date" min="1900-01-01" max="2022-02-17" value="2003-01-01" class="form-control">
+                    </div>
+                  </div>
+
+                <div class="mb-3 form-check">
+
+                    <legend>Genero</legend>
+
+                    <div class="form-check">
+                        <label for="genero form-check-label">Hombre</label>
+                        <input type="radio" name="genero" id="hombre" class="form-check-input"> 
+                    </div>
+                    <div class="form-check">
+                        <label for="genero form-check-label">Mujer</label>
+                        <input type="radio" name="genero" id="mujer" class="form-check-input">
+                    </div>
+                    <div class="form-check">
+                        <label for="genero form-check-label">Otro</label>
+                        <input type="radio" name="genero" id="otro" class="form-check-input">
+                    </div>
+
+                </div>
+
+                <div class="mb-3 form-check">
+                    <label for="terms" class="form-check-label">Acepto los terminos y condiciones</label>
+                    <input type="checkbox" name="terms" id="terms" required class="form-check-input">
+                </div>
+
+                <input type="submit" value="Registrarme" class="btn btn-primary" >
+
+            </div>
+
+        </form>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
