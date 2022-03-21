@@ -3,7 +3,8 @@ const {
     obtenerUsuarioById,
     obtenerUsuarioByEdad,
     obtenerUsuarioByApellido,
-    obtenerUsuarios
+    obtenerUsuarios,
+    guardarUsuarios,
     } = require('../services/services');
 
 
@@ -89,5 +90,20 @@ const Register=(req,res)=>{
     res.render('vistas/register.ejs',{title:title,/*  usuarios:usuarios,apellido:apellido */})
 }
 
+const ProcessRegister=(req,res)=>{
+    let {nombre,username,password,password2,email,telefono,pais,date,genero}=req.body;
+        
+        const user ={
+            nombre,username,password,password2,email,telefono,pais,date,genero
+        }
 
-module.exports={holaHome,holaUsuario,holaUsuarioId,holaUsuarios,holaUsuarioEdad,Login,ProcessLogin,Register}
+        guardarUsuarios(user)
+        console.log(user);
+        res.send(user)
+        // res.render('vistas/login.ejs',{title:title,/*  usuarios:usuarios,apellido:apellido */})
+    }
+
+
+    
+
+module.exports={holaHome,holaUsuario,holaUsuarioId,holaUsuarios,holaUsuarioEdad,Login,ProcessLogin,Register,ProcessRegister}

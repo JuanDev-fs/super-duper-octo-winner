@@ -10,7 +10,8 @@ const {
     holaUsuarioEdad,
     Login,
     ProcessLogin,
-    Register
+    Register,
+    ProcessRegister
     }= require('../controllers/controller')
 
 router.get('/',holaHome)
@@ -27,5 +28,7 @@ router.get('/login',Login)
 router.post('/login',ProcessLogin)
 
 router.get('/register',Register)
+router.post('/register',ProcessRegister)
+
 
 module.exports=router;

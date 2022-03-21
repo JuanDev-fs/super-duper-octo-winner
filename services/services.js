@@ -33,7 +33,34 @@ const obtenerUsuarios =()=>{
     return users
 }
 
+const obtenerIdMax = ()=>{
+    let idFull =[]
+    DATOS_USUARIOS.forEach(usuario=>idFull.push(usuario.id))
+    return Math.max(...idFull)
+}
+
+const guardarUsuarios =(userDataForm)=>{
+    let idMax = obtenerIdMax()
+    /* let userData =  */
+    let user = {
+        id:idMax+1,
+        nombre:userDataForm.nombre,
+        username:userDataForm.username,
+        password:userDataForm.password,
+        password2:userDataForm.password2,
+        email:userDataForm.email,
+        telefono:userDataForm.telefono,
+        pais:userDataForm.pais,
+        date:userDataForm.date,
+        genero:userDataForm.genero,
+    }
+
+    DATOS_USUARIOS.push(user)    
+    console.log(DATOS_USUARIOS);
+}
+// console.log(guardarUsuarios());
+
 
 // console.log(obtenerUsuarioByApellido('Miranda'));
 
-module.exports={obtenerUsuarioById,obtenerUsuarioByEdad,obtenerUsuarioByApellido,obtenerUsuarios}
+module.exports={obtenerUsuarioById,obtenerUsuarioByEdad,obtenerUsuarioByApellido,obtenerUsuarios,guardarUsuarios}
