@@ -14,7 +14,7 @@
             <div class="container col-sm-6">
                 <div class="mb-3">
                     <label for="username" class="form-label">Nombre de usuario</label>
-                    <input type="text" name="username" id="username" autofocus placeholder="John Wick" class="form-control" required>
+                    <input type="text" name="username" id="username" autofocus placeholder="John Wick" class="form-control" required value="<% if(typeof usuario != 'undefined'){ %><%= usuario.username %><% } %>">
 
                 </div>
 
@@ -47,7 +47,11 @@
                   </div>
              </div> -->
 
-             
+             <% if(typeof validaciones != 'undefined'){ %>
+                <%    validaciones.forEach( (validacion)=>{ %>
+                    <p> <%= validacion.msg %> </p>
+                    <%   }) %>
+                <% } %>
 
         </form>
         

@@ -66,6 +66,8 @@ const  holaUsuarios=(req,res)=>{
 
 }
 
+
+//LOGIN
 const Login=(req,res)=>{
     let title = 'Login'
     res.render('vistas/login.ejs',{title:title,/*  usuarios:usuarios,apellido:apellido */})
@@ -85,6 +87,20 @@ const ProcessLogin=(req,res)=>{
     // res.render('vistas/login.ejs',{title:title,/*  usuarios:usuarios,apellido:apellido */})
 }
 
+
+const ProcessLoginValidation = (req,res,errors)=>{
+    if (!errors.isEmpty()) {
+        let title = 'Login'
+        const {username,password} = req.body;
+        const usuarioEnviado={username,password}
+        let validaciones = errors.array()
+        res.render('vistas/login',{title:title,usuario:usuarioEnviado,validaciones:validaciones})
+    }
+}
+
+
+
+//Registro
 const Register=(req,res)=>{
     let title = 'Registrarse'
     res.render('vistas/register.ejs',{title:title,/*  usuarios:usuarios,apellido:apellido */})
@@ -103,7 +119,17 @@ const ProcessRegister=(req,res)=>{
         // res.render('vistas/login.ejs',{title:title,/*  usuarios:usuarios,apellido:apellido */})
     }
 
+    const ProcessRegisterValidation = (req,res,errors)=>{
+        if (!errors.isEmpty()) {
+            let title = 'Register'
+            const {nombre,username,password,password2,email,telefono} = req.body;
+            const usuarioEnviado={nombre,username,password,password2,email,telefono}
+            let validaciones = errors.array()
+            res.render('vistas/register',{title:title,usuario:usuarioEnviado,validaciones:validaciones})
+        }
+    }
+
 
     
 
-module.exports={holaHome,holaUsuario,holaUsuarioId,holaUsuarios,holaUsuarioEdad,Login,ProcessLogin,Register,ProcessRegister}
+module.exports={holaHome,holaUsuario,holaUsuarioId,holaUsuarios,holaUsuarioEdad,Login,ProcessLogin,ProcessLoginValidation,Register,ProcessRegister,ProcessRegisterValidation}

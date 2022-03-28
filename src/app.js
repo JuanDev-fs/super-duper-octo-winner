@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 //requerimos el modulo routes
 const routes = require('../routes/routes')
 
+//requerimos esxpress Validator
+const { body, validationResult } = require('express-validator');
 
 //seteamos motor de plantillas
 app.set('view engine','ejs');
