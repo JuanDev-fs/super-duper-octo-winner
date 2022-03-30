@@ -45,6 +45,7 @@ const guardarUsuarios =(userDataForm)=>{
     let user = {
         id:idMax+1,
         nombre:userDataForm.nombre,
+        nombre:userDataForm.apellido,
         username:userDataForm.username,
         password:userDataForm.password,
         password2:userDataForm.password2,
@@ -53,6 +54,7 @@ const guardarUsuarios =(userDataForm)=>{
         pais:userDataForm.pais,
         date:userDataForm.date,
         genero:userDataForm.genero,
+        genero:userDataForm.codigoPostal,
     }
 
     DATOS_USUARIOS.push(user)    
