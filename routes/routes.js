@@ -3,6 +3,9 @@ const router = express.Router();
 //express validator
 const { body, validationResult } = require('express-validator');
 
+
+
+
 const {
     holaHome,
     holaUsuario,

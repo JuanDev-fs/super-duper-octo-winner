@@ -7,7 +7,9 @@ const {
     guardarUsuarios,
     } = require('../services/services');
 
-
+//bcrypt
+const bcrypt = require('bcrypt');
+const saltos =10;
 
 
 /* const holaHome =(req,res)=>{
@@ -129,7 +131,10 @@ const ProcessRegisterValidation = (req,res,errors)=>{
     } else {
         let title = 'Registo Exitoso'
         const {nombre,apellido,username,password,password2,email,telefono,codigoPostal,pais,genero,date} = req.body;
-        const usuarioEnviado={nombre,apellido,username,password,password2,email,telefono,codigoPostal,pais,genero,date}
+        console.log(password);
+        const hash = bcrypt.hashSync(password,saltos)
+        console.log(hash);
+        const usuarioEnviado={nombre,apellido,username,hash,email,telefono,codigoPostal,pais,genero,date}
         guardarUsuarios(usuarioEnviado)
         console.log(usuarioEnviado);
         res.render('vistas/home',{title:title/* ,usuario:usuarioEnviado,validaciones:validaciones */})
