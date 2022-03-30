@@ -13,14 +13,28 @@
             <div class="container col-sm-6">
                 <div class="row">
                   <div class="col mb-3">
-                        <label for="nombre" class="form-label">Nombre y Apellido</label>
+                        <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" name="nombre" id="nombre" required class="form-control" autofocus value="<% if(typeof usuario != 'undefined'){ %><%= usuario.nombre %><% } %>">
                   </div>
                   <div class="col mb-3">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" name="apellido" id="apellido" required class="form-control" autofocus value="<% if(typeof usuario != 'undefined'){ %><%= usuario.apellido %><% } %>">
+                  </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col mb-3">
                         <label for="username" class="form-label">Nombre de Usuario</label>
                         <input type="text" name="username" id="username" required class="form-control" value="<% if(typeof usuario != 'undefined'){ %><%= usuario.username %><% } %>">
-                  </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" name="email" id="email" required class="form-control" value="<% if(typeof usuario != 'undefined'){ %><%= usuario.email %><% } %>">
+                    </div>
+                    
                 </div>
+                
                 <div class="row">
                   <div class="col mb-3">
                         <label for="passwordemail" class="form-label">Contraseña</label>
@@ -31,19 +45,21 @@
                         <input type="password" name="password2" id="password2" required class="form-control">
                   </div>
                 </div>
+
                 <div class="row">
+                     <div class="col mb-3">
+                    <label for="telefono" class="form-label">Telefono</label>
+                    <input type="tel" name="telefono" id="telefono" class="form-control" value="<% if(typeof usuario != 'undefined'){ %><%= usuario.telefono %><% } %>">
+                </div>
                     <div class="col mb-3">
-                        <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" name="email" id="email" required class="form-control" value="<% if(typeof usuario != 'undefined'){ %><%= usuario.email %><% } %>">
-                    </div>
-                    <div class="col mb-3">
-                        <label for="telefono" class="form-label">Telefono</label>
-                        <input type="tel" name="telefono" id="telefono" class="form-control" value="<% if(typeof usuario != 'undefined'){ %><%= usuario.telefono %><% } %>">
+                          <label for="codigoPostal" class="form-label">Codigo Postal</label>
+                          <input type="number" name="codigoPostal" id="codigoPostal" required class="form-control" value="<% if(typeof usuario != 'undefined'){ %><%= usuario.codigoPostal %><% } %>">
                     </div>
                   </div>
+                  
                   <div class="row mb-3">
                     <div class="col">
-                        <label for="pais" class="form-label">Pais</label>
+                        <label for="pais" class="form-label">Pais de Residencia</label>
                         <select name="pais" id="pais" class="form-select">
                             <option value="argentina">Argentina</option>
                             <option value="brasil">Brasil</option>
@@ -84,16 +100,19 @@
 
                 <input type="submit" value="Registrarme" class="btn btn-primary" >
 
+               
             </div>
-
-            <% if(typeof validaciones != 'undefined'){ %>
-                <%    validaciones.forEach( (validacion)=>{ %>
-                    <p> <%= validacion.msg %> </p>
-                    <%   }) %>
-                <% } %>
-
+            
+           
+            
+                <% if(typeof validaciones != 'undefined'){ %>
+                    <%    validaciones.forEach( (validacion)=>{ %>
+                        <p> <%= validacion.msg %> </p>
+                        <%   }) %>
+                    <% } %>
 
         </form>
+
     </main>
 
     <%- include('../partials/footer') %>

@@ -107,10 +107,10 @@ const Register=(req,res)=>{
 }
 
 const ProcessRegister=(req,res)=>{
-    let {nombre,username,password,password2,email,telefono,pais,date,genero}=req.body;
+    let {nombre,apellido,username,password,password2,email,telefono,codigoPostal,pais,date,genero}=req.body;
         
         const user ={
-            nombre,username,password,password2,email,telefono,pais,date,genero
+            nombre,apellido,username,password,password2,email,telefono,codigoPostal,pais,date,genero
         }
 
         guardarUsuarios(user)
@@ -119,15 +119,24 @@ const ProcessRegister=(req,res)=>{
         // res.render('vistas/login.ejs',{title:title,/*  usuarios:usuarios,apellido:apellido */})
     }
 
-    const ProcessRegisterValidation = (req,res,errors)=>{
-        if (!errors.isEmpty()) {
-            let title = 'Register'
-            const {nombre,username,password,password2,email,telefono} = req.body;
-            const usuarioEnviado={nombre,username,password,password2,email,telefono}
-            let validaciones = errors.array()
-            res.render('vistas/register',{title:title,usuario:usuarioEnviado,validaciones:validaciones})
-        }
+const ProcessRegisterValidation = (req,res,errors)=>{
+    if (!errors.isEmpty()) {
+        let title = 'Register'
+        const {nombre,apellido,username,password,password2,email,telefono,codigoPostal} = req.body;
+        const usuarioEnviado={nombre,apellido,username,password,password2,email,telefono,codigoPostal}
+        let validaciones = errors.array()
+        res.render('vistas/register',{title:title,usuario:usuarioEnviado,validaciones:validaciones})
+    } else {
+        let title = 'Registo Exitoso'
+        const {nombre,apellido,username,password,password2,email,telefono,codigoPostal,pais,genero,date} = req.body;
+        const usuarioEnviado={nombre,apellido,username,password,password2,email,telefono,codigoPostal,pais,genero,date}
+        guardarUsuarios(usuarioEnviado)
+        console.log(usuarioEnviado);
+        res.render('vistas/home',{title:title/* ,usuario:usuarioEnviado,validaciones:validaciones */})
+            
     }
+
+}
 
 
     

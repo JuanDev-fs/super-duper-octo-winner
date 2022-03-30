@@ -45,11 +45,21 @@ router.get('/register',Register)
 // router.post('/register',ProcessRegister)
 router.post('/register',
 body('nombre','ingrese un nombre valido').isLength({min:3}).isAlpha(),
+body('apellido','ingrese un apellido valido').isLength({min:3}).isAlpha(),
 body('username','ingrese un nombre de usuario valido').isLength({min:5}),
-body('password','ingrese un password valido').isStrongPassword(),
-body('password2','ingrese un password valido').isStrongPassword(),
 body('email','ingrese un email valido').isEmail(),
+body('password','ingrese un password valido').isStrongPassword(),
+
+//validacion customizada verificacion si ambos password son iguales
+body('password2').custom((value, { req }) => {
+    if (value !== req.body.password) {
+      throw new Error('Las contraseñas deben ser iguales');
+    }
+    return true;
+  }),
+// body('password2','ingrese un password valido').isStrongPassword(),
 body('telefono','ingrese un telefono valido').isNumeric().isLength({min:7}),
+body('codigoPostal','ingrese un Codigo Postal valido').isNumeric().isLength({min:4}),
 
 
 (req, res) => {
