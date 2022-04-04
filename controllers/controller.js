@@ -5,7 +5,11 @@ const {
     obtenerUsuarioByApellido,
     obtenerUsuarios,
     guardarUsuarios,
+    comprobarUsername,
     } = require('../services/services');
+
+
+
 
 //bcrypt
 const bcrypt = require('bcrypt');
@@ -97,7 +101,20 @@ const ProcessLoginValidation = (req,res,errors)=>{
         const usuarioEnviado={username,password}
         let validaciones = errors.array()
         res.render('vistas/login',{title:title,usuario:usuarioEnviado,validaciones:validaciones})
-    }
+    } 
+        // let title = 'Login'
+        const {username,password}=req.body;
+        
+        const user = comprobarUsername(username)
+        console.log(user);
+        if(user.length===0){
+            console.log("No existe el usuario");
+        } else if(!bcrypt.compareSync(password, user[0].password)){
+            console.log("La Contraseña es incorrecta");
+        } else {
+            console.log("ingreso correctamente");
+        }
+
 }
 
 
@@ -130,7 +147,7 @@ const ProcessRegisterValidation = (req,res,errors)=>{
         res.render('vistas/register',{title:title,usuario:usuarioEnviado,validaciones:validaciones})
     } else {
         let title = 'Registo Exitoso'
-        const {nombre,apellido,username,password,password2,email,telefono,codigoPostal,pais,genero,date} = req.body;
+        const {nombre,apellido,username,password,email,telefono,codigoPostal,pais,genero,date} = req.body;
         console.log(password);
         const hash = bcrypt.hashSync(password,saltos)
         console.log(hash);

@@ -63,6 +63,9 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
                             <th scope="col">Edad</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Pais</th>
+                            <th scope="col">Codigo Postal</th>
                         </tr>
                     </thead>
                     
@@ -72,12 +75,15 @@
                             <td><%= usuarios.nombre %></td>
                             <td><%= usuarios.apellido %></td>
                             <td><%= usuarios.edad %></td>
+                            <td><%= usuarios.telefono %></td>
+                            <td><%= usuarios.pais %></td>
+                            <td><%= usuarios.codigoPostal %></td>
                           </tr>
                     </tbody>
                 </table>
             </div>
 
-            <p><b> id: <%= usuarios.id %></b>, Nombre: <%= usuarios.nombre %>, Apellido:<%= usuarios.apellido %>, Edad: <%= usuarios.edad %> años.</p>     
+            <!-- <p><b> id: <%= usuarios.id %></b>, Nombre: <%= usuarios.nombre %>, Apellido:<%= usuarios.apellido %>, Edad: <%= usuarios.edad %> años.</p>      -->
     
         <% } %>
 
