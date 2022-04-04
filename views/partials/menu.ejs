@@ -24,15 +24,38 @@
           </li>
 
 
+          
           <!-- <li class="nav-item">
-            <a class="nav-link" href="/usuarios">Usuarios</a>
-          </li> -->
-          <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/register">Registrarse</a>
-          </li>
+          </li> -->
+
+          <%  if(state === 'logout'){ %>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/myaccount" id="navbarDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    My Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Mis datos</a></li>
+                    <li><a class="dropdown-item" href="#">Mis compras</a></li>
+                    <li><a class="dropdown-item" href="#">Mis recomendaciones</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <% } else { %> 
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+            </li>
+            <%  } %>
+
         </ul>
 
         <form class="d-flex">

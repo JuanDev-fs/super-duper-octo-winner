@@ -22,12 +22,22 @@ const saltos =10;
 } */
 
 const holaHome =(req,res)=>{
+    session=req.session;
     let title = 'Home'
-    res.render('vistas/home.ejs',{title:title})
+    if(session.userid){
+		let state = "logout"
+		res.render('./vistas/home',{state:state,title:title})
+    }else{
+		let state = ""
+		res.render('./vistas/home',{state:state,title:title})
+	}
+    /* let title = 'Home' */
+    /* res.render('vistas/home.ejs',{title:title}) */
 }
 
 const holaUsuario=(req,res)=>{
     let title = 'Usuarios'
+    let state = ""
     let usuarios=obtenerUsuarios();
     // console.log(usuarios);
     // let objetoJson = JSON.stringify(usuarios,null,2)
@@ -36,37 +46,39 @@ const holaUsuario=(req,res)=>{
     // res.render('vistas/bienvenido.ejs',{title:title, usuarios:objetoJson})
 
     // res.render('vistas/bienvenido.ejs',{title:title, usuarios:usuarios})
-    res.render('vistas/home.ejs',{title:title, usuarios:usuarios})
+    res.render('vistas/home.ejs',{title:title, usuarios:usuarios,state:state})
 }
 const holaUsuarioId=(req,res)=>{
     let id = req.params.id
-
+    let state = ""
     let title = 'Usuario Id'
     let usuarios=obtenerUsuarioById(Number(id));
 
     // res.send(obtenerUsuarioById(Number(id)))
 
     // res.render('vistas/bienvenido.ejs',{title:title, usuarios:usuarios})
-    res.render('vistas/home.ejs',{title:title, usuarios:usuarios})
+    res.render('vistas/home.ejs',{title:title, usuarios:usuarios,state:state})
 
 }
 
 const holaUsuarioEdad=(req,res)=>{
     let edad = req.params.edad
+    let state = ""
     let title = 'Usuario por Edad'
     let usuarios = obtenerUsuarioByEdad(Number(edad));
     // res.render('vistas/bienvenido.ejs',{title:title, usuarios:usuarios,edad:edad})
-    res.render('vistas/home.ejs',{title:title, usuarios:usuarios,edad:edad})
+    res.render('vistas/home.ejs',{title:title, usuarios:usuarios,edad:edad,state:state})
 
     // res.send(obtenerUsuarioByEdad(Number(edad)))
 }
 
 const  holaUsuarios=(req,res)=>{
     let apellido = req.params.apellido;
+    let state = ""
     let title = 'Usuario de Apellido'
     let usuarios=obtenerUsuarioByApellido(apellido);
     // res.render('vistas/bienvenido.ejs',{title:title, usuarios:usuarios,apellido:apellido})
-    res.render('vistas/home.ejs',{title:title, usuarios:usuarios,apellido:apellido})
+    res.render('vistas/home.ejs',{title:title, usuarios:usuarios,apellido:apellido,state:state})
 
     // res.send(obtenerUsuarioByApellido(apellido))
 
@@ -76,7 +88,9 @@ const  holaUsuarios=(req,res)=>{
 //LOGIN
 const Login=(req,res)=>{
     let title = 'Login'
-    res.render('vistas/login.ejs',{title:title,/*  usuarios:usuarios,apellido:apellido */})
+    let state = ""
+	res.render('./vistas/login',{state:state,title:title})
+    // res.render('vistas/login.ejs',{title:title,/*  usuarios:usuarios,apellido:apellido */})
 }
 
 const ProcessLogin=(req,res)=>{
@@ -112,7 +126,13 @@ const ProcessLoginValidation = (req,res,errors)=>{
         } else if(!bcrypt.compareSync(password, user[0].password)){
             console.log("La Contraseña es incorrecta");
         } else {
-            console.log("ingreso correctamente");
+            let title = 'login'
+            session=req.session;
+            session.userid=username;
+            console.log(req.session)
+            let state = "logout"
+            res.render('./vistas/home',{title:title,state:state})
+            // console.log("ingreso correctamente");
         }
 
 }
@@ -122,7 +142,8 @@ const ProcessLoginValidation = (req,res,errors)=>{
 //Registro
 const Register=(req,res)=>{
     let title = 'Registrarse'
-    res.render('vistas/register.ejs',{title:title,/*  usuarios:usuarios,apellido:apellido */})
+    let state = ""
+    res.render('vistas/register.ejs',{title:title,state:state/*  usuarios:usuarios,apellido:apellido */})
 }
 
 const ProcessRegister=(req,res)=>{
@@ -141,12 +162,14 @@ const ProcessRegister=(req,res)=>{
 const ProcessRegisterValidation = (req,res,errors)=>{
     if (!errors.isEmpty()) {
         let title = 'Register'
+        let state = ""
         const {nombre,apellido,username,password,password2,email,telefono,codigoPostal} = req.body;
         const usuarioEnviado={nombre,apellido,username,password,password2,email,telefono,codigoPostal}
         let validaciones = errors.array()
-        res.render('vistas/register',{title:title,usuario:usuarioEnviado,validaciones:validaciones})
+        res.render('vistas/register',{title:title,state:state,usuario:usuarioEnviado,validaciones:validaciones})
     } else {
         let title = 'Registo Exitoso'
+        let state = ""
         const {nombre,apellido,username,password,email,telefono,codigoPostal,pais,genero,date} = req.body;
         console.log(password);
         const hash = bcrypt.hashSync(password,saltos)
@@ -154,7 +177,7 @@ const ProcessRegisterValidation = (req,res,errors)=>{
         const usuarioEnviado={nombre,apellido,username,hash,email,telefono,codigoPostal,pais,genero,date}
         guardarUsuarios(usuarioEnviado)
         console.log(usuarioEnviado);
-        res.render('vistas/home',{title:title/* ,usuario:usuarioEnviado,validaciones:validaciones */})
+        res.render('vistas/home',{title:title,state:state/* ,usuario:usuarioEnviado,validaciones:validaciones */})
             
     }
 

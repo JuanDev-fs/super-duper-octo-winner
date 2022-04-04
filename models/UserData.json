@@ -170,5 +170,19 @@
     "genero": "otro",
     "date": "1986-11-12",
     "edad": 35
+  },
+  {
+    "id": 14,
+    "nombre": "Mirtha",
+    "apellido": "Legrand",
+    "username": "lachiqui",
+    "password": "$2b$10$MquxAbT0klgZWVSf7LuetO9oxasdzxFmsnsGSyqqwVRxR4RcoWj3O",
+    "email": "lachiqui@aol.com",
+    "telefono": "4152536",
+    "codigoPostal": "2008",
+    "pais": "argentina",
+    "genero": "mujer",
+    "date": "2003-01-01",
+    "edad": 19
   }
 ]

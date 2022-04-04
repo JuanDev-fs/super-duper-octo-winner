@@ -70,4 +70,10 @@ body('codigoPostal','ingrese un Codigo Postal valido').isNumeric().isLength({min
     ProcessRegisterValidation(req,res,errors) 
 })
 
+
+router.get('/logout',(req,res) => {
+  req.session.destroy();
+  res.redirect('/');
+})
+
 module.exports=router;
