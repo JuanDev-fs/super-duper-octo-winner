@@ -37,8 +37,18 @@ const holaHome =(req,res)=>{
 
 const holaUsuario=(req,res)=>{
     let title = 'Usuarios'
-    let state = ""
+    session=req.session;
     let usuarios=obtenerUsuarios();
+
+    if(session.userid){
+		let state = "logout"
+		res.render('./vistas/home',{state:state,title:title, usuarios:usuarios})
+    }else{
+		let state = ""
+		res.render('./vistas/home',{state:state,title:title, usuarios:usuarios})
+	}
+
+
     // console.log(usuarios);
     // let objetoJson = JSON.stringify(usuarios,null,2)
     // res.send(obtenerUsuarios())
@@ -46,7 +56,7 @@ const holaUsuario=(req,res)=>{
     // res.render('vistas/bienvenido.ejs',{title:title, usuarios:objetoJson})
 
     // res.render('vistas/bienvenido.ejs',{title:title, usuarios:usuarios})
-    res.render('vistas/home.ejs',{title:title, usuarios:usuarios,state:state})
+    /* res.render('vistas/home.ejs',{title:title, usuarios:usuarios,state:state}) */
 }
 const holaUsuarioId=(req,res)=>{
     let id = req.params.id

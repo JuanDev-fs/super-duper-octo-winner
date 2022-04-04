@@ -27,8 +27,8 @@ app.use(sessions({
 	secret: "123456",
 	resave: false,
 	saveUninitialized:false, //true ya depreciado config a false ver doc
-	// cookie: { maxAge:unDia }
-    cookie: { maxAge:unMinuto }
+	cookie: { maxAge:unDia }
+    //cookie: { maxAge:unMinuto }
 }));
 
 //usar las rutas
