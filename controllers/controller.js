@@ -121,10 +121,11 @@ const ProcessLogin=(req,res)=>{
 const ProcessLoginValidation = (req,res,errors)=>{
     if (!errors.isEmpty()) {
         let title = 'Login'
+        let state = ""
         const {username,password} = req.body;
         const usuarioEnviado={username,password}
         let validaciones = errors.array()
-        res.render('vistas/login',{title:title,usuario:usuarioEnviado,validaciones:validaciones})
+        res.render('vistas/login',{title:title,usuario:usuarioEnviado,validaciones:validaciones,state:state})
     } 
         // let title = 'Login'
         const {username,password}=req.body;

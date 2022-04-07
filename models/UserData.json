@@ -184,5 +184,19 @@
     "genero": "mujer",
     "date": "2003-01-01",
     "edad": 19
+  },
+  {
+    "id": 15,
+    "nombre": "Viggo",
+    "apellido": "Mortensen",
+    "username": "aragon",
+    "password": "$2b$10$DVHzpSg8E6Gi2hNDRk/Tm.gtOAsMdIYZ3d8UBwFB/vHRgeg7E7Jyu",
+    "email": "viggoMo337@lorien.com",
+    "telefono": "4552511",
+    "codigoPostal": "1008",
+    "pais": "chile",
+    "genero": "hombre",
+    "date": "1975-01-08",
+    "edad": 47
   }
 ]
